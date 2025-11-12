@@ -6,6 +6,19 @@
 
 ---
 
+## 🎯 Objetivos e Conceitos-Chave
+
+Este não é apenas um repositório de implementações, mas um estudo prático sobre a equivalência e o desempenho de árvores de busca balanceadas. Os principais conceitos demonstrados são:
+
+1.  **Implementação do Zero:** As árvores **2-3-4** e **Rubro-Negra (RBT)** foram implementadas do zero em C, com gerenciamento manual de memória (`malloc`/`free`) e manipulação de ponteiros.
+2.  **Lógica de Auto-Balanceamento:**
+    * **Árvore 2-3-4:** Implementação da lógica de `split` (divisão) na inserção e `merge` (fusão) na remoção para manter a árvore perfeitamente balanceada.
+    * **Árvore Rubro-Negra:** Implementação das 5 propriedades da RBT, com lógica de **recoloração** e **rotações** (simples e duplas) para corrigir violações.
+3.  **Isomorfia (A Conversão):** A prova prática de que Árvores 2-3-4 e Árvores Rubro-Negras são isomórficas (estruturalmente equivalentes). Este projeto demonstra como uma RBT é, na essência, uma representação binária de uma Árvore 2-3-4.
+4.  **Análise de Desempenho:** Comparação de performance (benchmarks) entre as duas estruturas para analisar o custo computacional de suas diferentes estratégias de balanceamento.
+
+---
+
 ## 📂 Estrutura do Projeto
 
 ```
@@ -82,6 +95,22 @@ Após `make`, você terá os executáveis:
 ```
 
 ---
+
+## 🔗 A Mágica da Conversão: 2-3-4 ➔ Rubro-Negra
+
+A parte central deste trabalho é a função de conversão, que prova a **isomorfia (equivalência estrutural)** entre essas duas árvores. Uma Árvore Rubro-Negra pode ser vista como uma forma diferente de representar uma Árvore 2-3-4 no formato binário.
+
+
+
+A lógica de conversão (`conversao/conversao.c`) segue o mapeamento direto entre os nós:
+
+| Nó da Árvore 2-3-4 | Representação na Árvore Rubro-Negra (RBT) |
+| :--- | :--- |
+| **Nó-2** (1 chave) | **1 Nó Preto** (com 2 filhos pretos/NIL) |
+| **Nó-3** (2 chaves) | **1 Nó Preto** (Pai) com **1 Filho Vermelho** |
+| **Nó-4** (3 chaves) | **1 Nó Preto** (Pai) com **2 Filhos Vermelhos** |
+
+A função `converte234ParaRB` percorre a Árvore 2-3-4 e aplica essa transformação nó a nó, gerando uma Árvore Rubro-Negra perfeitamente válida e balanceada como resultado.
 
 ## 📊 Benchmarks
 
