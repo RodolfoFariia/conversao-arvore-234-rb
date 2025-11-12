@@ -1,4 +1,4 @@
-# 🌳 Trabalho 02: Árvores 2-3-4 & Rubro-Negra
+# 🌳 Árvores 2-3-4 & Rubro-Negra
 
 ![CMake](https://img.shields.io/badge/CMake-3.10%2B-blue) ![Language](https://img.shields.io/badge/Linguagem-C-brightgreen)
 
